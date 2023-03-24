@@ -1,6 +1,5 @@
 #include "wifiHost.h"
 
-
 const char* ssid = "Mini-Goldorak";   // Nom du réseau WiFi
 const char* password = "Club_Dorothee01@";  // Mot de passe du réseau WiFi
 
@@ -75,6 +74,6 @@ void initWifiHost() {
   server.begin();
 }
 
-void initServer() {
+void startServer() {
   server.handleClient();
 }

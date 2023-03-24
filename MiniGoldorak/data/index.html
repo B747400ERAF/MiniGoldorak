@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <title>Bienvenue sur la page de controle du robot</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Bienvenue sur la page de controle du robot</h1>
+
+        <h2>Etat de la detetction:</h2>
+        <h3>%ETAT-LED%</h3>
+
+        <h2>Controle de la detection:</h2>
+        <button class="on" onclick="httpGet('get?led=1')">ON</button>
+        <button class="off" onclick="httpGet('get?led=0')">OFF</button>
+
+        <h2>Temps rotation du moteur</h2>
+        <div class="slideContainer">
+            <label>1s</label>
+            <input type="range" min="1" max="20" step="1" value="5" onchange="sendServoPos(this);" id="myRange" class="slider">
+            <label>20s</label>
+            <p>Valeur: <span id="value"></span></p>
+        </div>
+        <h2>Temps tete levee</h2>
+        <div>
+            <label>1s</label>
+            <input type="range" min="1" max="10" step="1" value="3" onchange="sendServoPos(this);" id="myRange01" class="slider">
+            <label>10s</label>
+            <p>Valeur: <span id="value"></span></p>
+        </div>
+        <h2>Temps tete baissee</h2>
+        <div>
+            <label>1s</label>
+            <input type="range" min="1" max="10" step="1" onchange="sendServoPos(this);">
+            <label>10s</label>
+        </div>
+        <h2>Position doigt baisse</h2>
+        <div>
+            <label>0°</label>
+            <input type="range" min="0" max="180" step="1" onchange="sendServoPos(this);">
+            <label>180°</label>
+        </div>
+        <h2>Position doigt leve</h2>
+        <div>
+            <label>0°</label>
+            <input type="range" min="0" max="180" step="1" onchange="sendServoPos(this);">
+            <label>180°</label>
+        </div>
+        <h2>Eloignement detection</h2>
+        <div>
+            <label>30cm</label>
+            <input type="range" min="30" max="150" step="10" onchange="sendServoPos(this);">
+            <label>150cm</label>
+        </div>
+
+    </div>
+
+    	<script>  
+		var slider = document.getElementById('myRange');  
+		var sliderP = document.getElementById('value');  
+		sliderP.innerHTML = slider.value; 
+		slider.oninput = function() {  
+            slider.value = this.value;  
+			sliderP.innerHTML = this.value;  
+		} 
+        var slider = document.getElementById('myRange01');  
+		var sliderP = document.getElementById('value' + (i+1));  
+		sliderP.innerHTML = slider.value; 
+		slider.oninput = function() {  
+            slider.value = this.value;  
+			sliderP.innerHTML = this.value;  
+		} 
+        ajaxSetup({timeout:1000});  
+		function servo(pos) {  
+			$.get('/args?slider=' + pos);  
+			{Connection: close};  
+		}
+		function turnOnLed(){
+			$.get('/args?led=1');  
+			{Connection: close};  
+		}  
+		function turnOffLed(){
+			$.get('/args?led=0');  
+			{Connection: close};  
+		}
+	</script> 
+
+</body>
+
+</html>

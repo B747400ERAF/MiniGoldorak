@@ -6,13 +6,15 @@ void setup() {
   handleRoot();
   //handlePost();
   initWifiHost();
-  //initServer();
-  //algoActionneurs();
 }
 
 
 void loop() {
+  algoActionneurs();
+  startServer();
+}
+
+  
  // if(initServer()) 
  //   algoActionneurs();     
  // }
-}

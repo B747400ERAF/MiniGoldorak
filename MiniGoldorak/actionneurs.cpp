@@ -27,8 +27,9 @@ long unsigned elapsedTime;
 //Setup > par là, juste faire defiler l'écran
 void initActionneurs()
 {
-  Wire.begin();
+ 
   Serial.begin(115200);
+  Wire.begin();
   sensor.setTimeout(500);
   Wire.setClock(400000);
   pinMode (MOTOR_PIN_A1, OUTPUT);

@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Product-Sans';
+    src: url(Product-Sans-Regular.ttf);
+}
+
+button {
+    font-family: 'product-sans';
+    width: 100px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid rgb(156, 156, 156);
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.1s;
+    margin: 5px;
+}
+
+button:active {
+    background-color: beige !important;
+    color: white;
+}
+
+button:hover {
+    border-color: black;
+    color: white;
+    transition: 0.5s !important;
+}
+
+button.on {
+    background-color: green;
+    color: white;
+}
+
+button.off {
+    background-color: red;
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Product-Sans';
+}
