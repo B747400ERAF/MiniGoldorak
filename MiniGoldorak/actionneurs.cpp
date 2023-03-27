@@ -5,8 +5,6 @@
 #include <VL53L1X.h>
 #include <Servo.h>
 
-
-
 //Objects Declaration
 Servo servo;
 VL53L1X sensor;
@@ -27,7 +25,6 @@ long unsigned elapsedTime;
 //Setup > par là, juste faire defiler l'écran
 void initActionneurs()
 {
- 
   Serial.begin(115200);
   Wire.begin();
   sensor.setTimeout(500);
@@ -44,7 +41,7 @@ void initActionneurs()
   }
   sensor.setDistanceMode(VL53L1X::Long);
   sensor.setMeasurementTimingBudget(50000);
-  servo.attach(10); //Numéro pin moteur
+  servo.attach(D8); //Numéro pin moteur
   servo.write(10);
   delay(50);
 }
