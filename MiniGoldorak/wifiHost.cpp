@@ -1,9 +1,9 @@
-/*#include "wifiHost.h"
+#include "wifiHost.h"
 
 const char* ssid = "Mini-Goldorak";   // Nom du réseau WiFi
 const char* password = "Club_Dorothee01@";  // Mot de passe du réseau WiFi
 
-bool detectionValue = false;
+//bool detectionValue = false;
 
 ESP8266WebServer server(80);
 
@@ -45,8 +45,8 @@ void handleRoot() {
   server.send(200, "text/html", html);
 }
 
-/*
-void handlePost() {
+
+/*void handlePost() {
   if (server.hasArg("action")) {
     String action = server.arg("action");
     if (action == "Activer") {
@@ -58,7 +58,7 @@ void handlePost() {
   }
   handleRoot();
 }
-
+*/
 void initWifiHost() {
   Serial.begin(115200);
   SPIFFS.begin();
@@ -76,4 +76,4 @@ void initWifiHost() {
 
 void startServer() {
   server.handleClient();
-}*/
+}

@@ -1,20 +1,15 @@
-//#include "wifiHost.h"
-#include "actionneurs.h"
+#include "wifiHost.h"
+//#include "actionneurs.h"
 
 void setup() {
-  initActionneurs();
-  //handleRoot();
+  //initActionneurs();
+  handleRoot();
   //handlePost();
-  //initWifiHost();
+  initWifiHost();
 }
 
 
 void loop() {
-  algoActionneurs();  
-  //startServer();
+  startServer();
+  //algoActionneurs();  
 }
-
-  
- // if(initServer()) 
- //   algoActionneurs();     
- // }
