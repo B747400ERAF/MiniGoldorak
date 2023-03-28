@@ -9,8 +9,5 @@
 void handleRoot();
 void initWifiHost();
 void startServer();
-int GetSensorValue();
-void ArgsPage();
-
 
 #endif

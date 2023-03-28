@@ -14,11 +14,11 @@
         <h1>Bienvenue sur la page de controle du robot</h1>
 
         <h2>Etat de la detetction:</h2>
-        <h3>%ETAT-SENSOR%</h3>
+        <h3>%ETAT-LED%</h3>
 
         <h2>Controle de la detection:</h2>
-        <button class="on" onclick="turnOnSensor()">ON</button>
-        <button class="off" onclick="turnOffSensor()">OFF</button>
+        <button class="on" onclick="httpGet('get?led=1')">ON</button>
+        <button class="off" onclick="httpGet('get?led=0')">OFF</button>
 
         <h2>Temps rotation du moteur</h2>
         <div class="slideContainer">
@@ -81,12 +81,12 @@
 			$.get('/args?slider=' + pos);  
 			{Connection: close};  
 		}
-		function turnOnSensor(){
-			$.get('/args?sensor=1');  
+		function turnOnLed(){
+			$.get('/args?led=1');  
 			{Connection: close};  
 		}  
-		function turnOffSensor(){
-			$.get('/args?sensor=0');  
+		function turnOffLed(){
+			$.get('/args?led=0');  
 			{Connection: close};  
 		}
 	</script> 
