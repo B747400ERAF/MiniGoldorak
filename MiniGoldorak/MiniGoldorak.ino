@@ -1,15 +1,18 @@
 #include "wifiHost.h"
-//#include "actionneurs.h"
+#include "actionneurs.h"
 
 void setup() {
-  //initActionneurs();
+  initActionneurs();
   handleRoot();
-  //handlePost();
   initWifiHost();
 }
 
 
 void loop() {
   startServer();
-  //algoActionneurs();  
+  ArgsPage();
+  Serial.print("Serveur started ");
+  if (GetSensorValue() == true ) {
+    algoActionneurs();
+  }
 }

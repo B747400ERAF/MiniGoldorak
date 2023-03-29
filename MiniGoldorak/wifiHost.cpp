@@ -3,12 +3,14 @@
 const char* ssid = "Mini-Goldorak";   // Nom du réseau WiFi
 const char* password = "Club_Dorothee01@";  // Mot de passe du réseau WiFi
 
-//bool detectionValue = false;
+bool sensorValue;
+int GetSensorValue() {
+  return sensorValue;
+}
 
 ESP8266WebServer server(80);
 
 //Adresse IP: 192.168.4.1
-
 
 void handleRoot() {
   String html = "index";
@@ -45,20 +47,17 @@ void handleRoot() {
   server.send(200, "text/html", html);
 }
 
-
-/*void handlePost() {
-  if (server.hasArg("action")) {
-    String action = server.arg("action");
-    if (action == "Activer") {
-      sensorEnabled = true;
-      sensor.init();
-    } else if (action == "Désactiver") {
-      sensorEnabled = false;
-    }
+void ArgsPage() { 
+  if(server.arg("sensor") != "on"){
+    sensorValue = server.arg("sensor").toInt(); 
+    Serial.print("Valeur de la detection: "); Serial.println(sensorValue); 
+    sensorValue = true;
+  } else {
+    sensorValue = false;
   }
-  handleRoot();
+  server.send(200, "text/plain", "ok"); 
 }
-*/
+
 void initWifiHost() {
   Serial.begin(115200);
   SPIFFS.begin();
@@ -68,9 +67,9 @@ void initWifiHost() {
   IPAddress myIP = WiFi.softAPIP();
   Serial.print("Adresse IP du point d'accès: ");
   Serial.println(myIP);
-  server.on("/", handleRoot);
-  //server.on("/", handlePost);
-  //server.on("/args", ArgsPage);
+  server.serveStatic("/", SPIFFS, "/index.html"); 
+  server.on("/args", ArgsPage);
+  server.on("/", HTTP_GET, handleRoot);
   server.begin();
 }
 

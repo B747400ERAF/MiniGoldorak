@@ -17,8 +17,8 @@
         <h3>%ETAT-LED%</h3>
 
         <h2>Controle de la detection:</h2>
-        <button class="on" onclick="httpGet('get?led=1')">ON</button>
-        <button class="off" onclick="httpGet('get?led=0')">OFF</button>
+        <button class="on" onclick="turnOnSensor()">ON</button>
+        <button class="off" onclick="turnOffSensor()">OFF</button>
 
         <h2>Temps rotation du moteur</h2>
         <div class="slideContainer">
@@ -27,7 +27,7 @@
             <label>20s</label>
             <p>Valeur: <span id="value"></span></p>
         </div>
-        <h2>Temps tete levee</h2>
+        <h2>Temps tete levee tres tres tres fort</h2>
         <div>
             <label>1s</label>
             <input type="range" min="1" max="10" step="1" value="3" onchange="sendServoPos(this);" id="myRange01" class="slider">
@@ -81,12 +81,12 @@
 			$.get('/args?slider=' + pos);  
 			{Connection: close};  
 		}
-		function turnOnLed(){
-			$.get('/args?led=1');  
+		function turnOnSensor(){
+			$.get('/args?sensor=1');  
 			{Connection: close};  
 		}  
-		function turnOffLed(){
-			$.get('/args?led=0');  
+		function turnOffSensor(){
+			$.get('/args?sensor=0');  
 			{Connection: close};  
 		}
 	</script> 
